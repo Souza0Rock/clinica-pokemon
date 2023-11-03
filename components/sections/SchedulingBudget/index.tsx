@@ -9,7 +9,7 @@ const SchedulingBudget: React.FC = () => {
 
   const subtotalCalculation = 70 * payloadSchedule.pokemons_with_name_lenght;
 
-  console.log(payloadSchedule, 'payloadSchedule.pokemons_with_name_lenght')
+  // console.log(payloadSchedule, 'payloadSchedule.pokemons_with_name_lenght')
 
   return (
     <S.Container>

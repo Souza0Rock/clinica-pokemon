@@ -1,14 +1,14 @@
-/* eslint-disable import/no-anonymous-default-export */
-import { NextApiRequest, NextApiResponse } from "next";
+import axios from "axios";
 import { localInstance } from "../connectApi";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const getScheduleTime = async () => {
   try {
-    const response = await localInstance.get("/scheduling/time");
+    const { data } = await localInstance.get("scheduling/date");
 
-    return res.status(200).json(response.data);
+    return data;
   } catch (error) {
-    console.error("Erro na solicitação à API:", error);
-    res.status(500).json({ error: "Erro na solicitação à API" });
+    throw error;
   }
 };
+
+export default getScheduleTime

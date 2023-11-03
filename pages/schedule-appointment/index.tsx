@@ -3,29 +3,13 @@ import BaseLayout from "../../components/common/BaseLayout";
 import FormSchedule from "../../components/sections/FormSchedule";
 import getScheduleTime from "../../services/fetch/getScheduleTime";
 import axios from "axios";
+import { GetServerSideProps } from "next";
 
-export default function ScheduleAppointment() {
-  // console.log(data, 'data')
-
+export default function ScheduleAppointment(props: any) {
+  // console.log(props, "props");
   useEffect(() => {
-    try {
-      // Faça uma chamada ao servidor usando o Axios
-      const response = axios.get('http://localhost:3000/api/scheduling/date');
-  
-      // Extraia os dados da resposta
-      // const data = response.data;
-  
-      // Retorne os dados como props para a página
-      // return {
-      //   props: { data },
-      // };
-    } catch (error) {
-      console.error('Erro na solicitação ao servidor:', error);
-      return {
-        props: { data: [] },
-      };
-    }
-  }, [])
+    getScheduleTime()
+  },[])
 
   return (
     <BaseLayout pageTitle="Agendar consulta" showBanner>
@@ -34,23 +18,27 @@ export default function ScheduleAppointment() {
   );
 }
 
-// Defina a função getServerSideProps
-// export async function getServerSideProps(context) {
-//   try {
-//     // Faça uma chamada ao servidor usando o Axios
-//     const response = await axios.post('http://localhost:3000/scheduling/time');
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+  // console.log("oi");
 
-//     // Extraia os dados da resposta
-//     const data = response.data;
+  // return {
+  //   props: { oi: "oi" },
+  // };
+  // try {
+  // const { data } = await axios.get("http://localhost:3000/api/scheduling/date");
 
-//     // Retorne os dados como props para a página
-//     return {
-//       props: { data },
-//     };
-//   } catch (error) {
-//     console.error('Erro na solicitação ao servidor:', error);
-//     return {
-//       props: { data: [] },
-//     };
-//   }
-// }
+  // console.log(data, 'data')
+
+  // return {
+  //   props: {
+  //     data
+  //   },
+  // };
+  //  console.log('dewee')
+
+  // return {
+  //   props: {
+  //     teste: 'boraa'
+  //   }
+  // }
+// };
