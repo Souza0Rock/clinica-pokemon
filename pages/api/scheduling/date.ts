@@ -14,6 +14,11 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<DateResponse>
 ) {
+    if (req.method !== 'GET') {
+        res.status(405).end()
+        return
+    }
+
     const today = new Date();
     const nextWeek = today.getTime() * 1 + 7 * 24 * 3600 * 1000;
     let dates = getDates(today.getTime(), nextWeek)

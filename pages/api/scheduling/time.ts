@@ -4,14 +4,11 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Array<String>>
 ) {
-    if (req.method !== 'POST') {
+    if (req.method !== 'GET') {
         res.status(405).end()
         return
     }
-    if (req.headers['content-type']?.toLowerCase() !== "application/json" && !req.body.hasOwnProperty("date")) {
-        res.status(400).end()
-        return
-    }
+
     res.status(200).json([
         "10:00:00",
         "10:30:00",

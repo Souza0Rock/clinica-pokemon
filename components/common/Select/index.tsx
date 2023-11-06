@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as S from "./styles";
 import { Label } from "../Input/styles";
 
-type Props = {
+interface IProps {
   data: any;
   label?: String;
   value?: string;
@@ -12,7 +12,7 @@ type Props = {
   placeholder?: string;
 };
 
-const Select: React.FC<Props> = ({
+const Select: React.FC<IProps> = ({
   data,
   label,
   value,
@@ -36,8 +36,8 @@ const Select: React.FC<Props> = ({
       <S.SelectContainer disabled={disabled}>
         <S.Select disabled={disabled} onChange={onChange} value={value}>
           <option>{placeholder}</option>
-          {data.map((i: any) => (
-            <option key={i.id}>{i.name}</option>
+          {data.map((i: any, idx: number) => (
+            <option key={idx}>{i.label || i.name || i }</option>
           ))}
         </S.Select>
         <div className="icon-custom">{">"}</div>

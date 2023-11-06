@@ -1,35 +1,20 @@
 import React from "react";
 import * as S from "./styles";
-import Input from "../../common/Input";
 import Row from "../../common/Row";
 import Select from "../../common/Select";
 import { TSchedule, useForm } from "../../../contexts/form";
 
-const FormUser: React.FC<any> = ({ scheduleRegion }) => {
+const FormSetDate: React.FC<any> = ({ scheduleTime, scheduleDate }) => {
   const { payloadSchedule, setPayloadSchedule } = useForm();
 
   return (
     <S.Container>
       <Row>
-        <Input
-          label="Nome"
-          placeholder="Digite seu nome"
-          value={payloadSchedule.name}
-          width={48}
-        />
-        <Input
-          label="Sobrenome"
-          placeholder="Digite seu sobrenome"
-          value={payloadSchedule.surname}
-          width={48}
-        />
-      </Row>
-      <Row>
         <Select
-          data={scheduleRegion.results}
-          label={"Região"}
+          data={scheduleTime}
+          label="Horário de Atendimento"
           value={payloadSchedule.region}
-          placeholder="Selecione sua região"
+          placeholder="Selecione um horário"
           width={48}
           onChange={(e) => {
             setPayloadSchedule((prev: TSchedule) => ({
@@ -39,10 +24,10 @@ const FormUser: React.FC<any> = ({ scheduleRegion }) => {
           }}
         />
         <Select
-          data={[{ id: 1, name: "oi" }]}
-          label={"Cidade"}
+          data={scheduleDate}
+          label="Data para Atendimento"
           value={payloadSchedule.city}
-          placeholder="Selecione sua cidade"
+          placeholder="Selecione uma data"
           width={48}
           onChange={(e) => {
             setPayloadSchedule((prev: TSchedule) => ({
@@ -56,4 +41,4 @@ const FormUser: React.FC<any> = ({ scheduleRegion }) => {
   );
 };
 
-export default FormUser;
+export default FormSetDate;

@@ -1,44 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { GetServerSideProps } from "next";
+import { IScheduleAppointment } from "./types";
 import BaseLayout from "../../components/common/BaseLayout";
 import FormSchedule from "../../components/sections/FormSchedule";
 import getScheduleTime from "../../services/fetch/getScheduleTime";
-import axios from "axios";
-import { GetServerSideProps } from "next";
+import getScheduleDate from "../../services/fetch/getScheduleDate";
+import getScheduleRegion from "../../services/fetch/getSchedulingRegion";
 
-export default function ScheduleAppointment(props: any) {
-  // console.log(props, "props");
-  useEffect(() => {
-    getScheduleTime()
-  },[])
+export default function ScheduleAppointment(props: IScheduleAppointment) {
+  const { scheduleTime, scheduleDate, scheduleRegion } = props;
 
   return (
     <BaseLayout pageTitle="Agendar consulta" showBanner>
-      <FormSchedule />
+      <FormSchedule
+        scheduleTime={scheduleTime}
+        scheduleDate={scheduleDate}
+        scheduleRegion={scheduleRegion}
+      />
     </BaseLayout>
   );
 }
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-  // console.log("oi");
+export const getServerSideProps: GetServerSideProps = async () => {
+  const scheduleTime = await getScheduleTime();
+  const scheduleDate = await getScheduleDate();
+  const scheduleRegion = await getScheduleRegion();
 
-  // return {
-  //   props: { oi: "oi" },
-  // };
-  // try {
-  // const { data } = await axios.get("http://localhost:3000/api/scheduling/date");
-
-  // console.log(data, 'data')
-
-  // return {
-  //   props: {
-  //     data
-  //   },
-  // };
-  //  console.log('dewee')
-
-  // return {
-  //   props: {
-  //     teste: 'boraa'
-  //   }
-  // }
-// };
+  return {
+    props: {
+      scheduleTime,
+      scheduleDate,
+      scheduleRegion,
+    },
+  };
+};

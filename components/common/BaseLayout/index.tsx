@@ -23,7 +23,7 @@ const BaseLayout: React.FC<TProps> = ({
   return (
     <>
       <Head>
-        <title>{pageTitle} - Centro Pokemón</title>
+        <title>{pageTitle + ' -'} Centro Pokemón</title>
         <meta name="description" content="Centro Pokemón" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
