@@ -43,8 +43,8 @@ const FormSchedule: React.FC<IFormSchedule> = ({
       <FormProvider {...methods}>
         <S.FormContainer onSubmit={methods.handleSubmit(onSubmit)}>
           <FormUser scheduleRegion={scheduleRegion} />
-          {/* <FormTeam />
-          <FormSetDate
+          <FormTeam />
+          {/* <FormSetDate
             scheduleTime={scheduleTime}
             scheduleDate={scheduleDate}
           /> */}
