@@ -32,10 +32,10 @@ const Header: React.FC = () => {
         </S.TextContent>
       </S.Logo>
       <S.BoxNavigation>
-        <S.TextLink href="/about-us">Quem Somos</S.TextLink>
+        <S.TextLink href="/quem-somos">Quem Somos</S.TextLink>
         <Button
           label="Agendar Consulta"
-          onClick={() => push("/schedule-appointment")}
+          onClick={() => push("/agendar-consulta")}
         />
       </S.BoxNavigation>
     </S.Container>

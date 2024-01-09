@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import * as S from "./styles";
 import Input from "../../common/Input";
 import Row from "../../common/Row";
 import Select from "../../common/Select";
 import { TSchedule, useForm } from "../../../contexts/form";
+import getScheduleCitie from "../../../services/fetch/getScheduleCitie";
 
 const FormUser: React.FC<any> = ({ scheduleRegion }) => {
   const { payloadSchedule, setPayloadSchedule } = useForm();
+  const [cities, setCities] = useState();
+
+  const fetchCitie = useCallback(async () => {
+    const response = await getScheduleCitie(payloadSchedule.region);
+
+    setCities(response);
+  }, [payloadSchedule.region]);
+
+  useEffect(() => {
+    payloadSchedule.region !== '' && getScheduleCitie("s");
+  }, [payloadSchedule.region]);
 
   return (
     <S.Container>
@@ -39,6 +51,7 @@ const FormUser: React.FC<any> = ({ scheduleRegion }) => {
           }}
         />
         <Select
+          disabled
           data={[{ id: 1, name: "oi" }]}
           label={"Cidade"}
           value={payloadSchedule.city}

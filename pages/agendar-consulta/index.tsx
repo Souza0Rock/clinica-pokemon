@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { GetServerSideProps } from "next";
 import { IScheduleAppointment } from "./types";
 import BaseLayout from "../../components/common/BaseLayout";

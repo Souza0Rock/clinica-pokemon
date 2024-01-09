@@ -1,6 +1,6 @@
 import { pokeApiInstance } from "../connectApi";
 
-const getScheduleCitie = async ({ citie }: {citie: string}) => {
+const getScheduleCitie = async (citie: string) => {
   try {
     const { data } = await pokeApiInstance.get(`region/${citie}`);
     return data;

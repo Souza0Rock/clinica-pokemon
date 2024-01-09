@@ -7,7 +7,7 @@ const Banner: React.FC = () => {
   const { route } = useRouter();
 
   const validateRoute = () => {
-    if (route === "/about-us")
+    if (route === "/quem-somos")
       return {
         crumb: "Quem Somos",
         complementText: "A maior rede de tratamento pokémon.",
@@ -19,15 +19,17 @@ const Banner: React.FC = () => {
       };
   };
 
+  const { complementText, crumb } = validateRoute()
+
   return (
     <S.Container>
       <Typography color="#eee" fontSize={12}>
-        Home <span>{">"}</span> {validateRoute().crumb}
+        Home <span>{">"}</span> {crumb}
       </Typography>
       <Typography color="#fff" fontSize={32} fontWeight={700}>
-        {validateRoute().crumb}
+        {crumb}
       </Typography>
-      <Typography color="#eee">{validateRoute().complementText}</Typography>
+      <Typography color="#eee">{complementText}</Typography>
     </S.Container>
   );
 };
