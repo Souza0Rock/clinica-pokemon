@@ -2,13 +2,13 @@ import React from "react";
 import * as S from "./styles";
 import Typography from "../../common/Typography";
 import Row from "../../common/Row";
-import { useForm } from "../../../contexts/form";
+// import { useForm } from "../../../contexts/form";
 import Button from "../../common/Button";
 
 const SchedulingBudget: React.FC = () => {
-  const { payloadSchedule } = useForm();
+  // const { payloadSchedule } = useForm();
 
-  const subtotalCalculation = 70 * payloadSchedule.pokemons_with_name_lenght;
+  // const subtotalCalculation = 70 * payloadSchedule.pokemons_with_name_lenght;
 
   // console.log(payloadSchedule, 'payloadSchedule.pokemons_with_name_lenght')
 
@@ -20,7 +20,7 @@ const SchedulingBudget: React.FC = () => {
             Número de pokémons a serem atendidos:
           </Typography>
           <Typography color="#747474">
-            0{payloadSchedule.team_pokemons_length}
+            {/* 0{payloadSchedule.team_pokemons_length} */}
           </Typography>
         </Row>
         <Row>
@@ -31,7 +31,7 @@ const SchedulingBudget: React.FC = () => {
         </Row>
         <Row>
           <Typography color="#747474">Subtotal:</Typography>
-          <Typography color="#747474">R$ {subtotalCalculation},00</Typography>
+          {/* <Typography color="#747474">R$ {subtotalCalculation},00</Typography> */}
         </Row>
         <Row>
           <Typography color="#747474">Taxa geracional*:</Typography>
@@ -49,7 +49,8 @@ const SchedulingBudget: React.FC = () => {
         <Button
           label="Concluir Agendamento"
           fontWeight={700}
-          onClick={() => console.log("oi")}
+          type="submit"
+          // onClick={() => console.log("oi")}
         />
       </Row>
     </>

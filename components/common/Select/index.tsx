@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./styles";
 import { Label } from "../Input/styles";
+import { useFormContext } from "react-hook-form";
 
 interface IProps {
   data: any;
@@ -10,17 +11,19 @@ interface IProps {
   width?: number;
   onChange?: React.ChangeEventHandler<HTMLSelectElement>;
   placeholder?: string;
-};
+  name: string;
+}
 
 const Select: React.FC<IProps> = ({
   data,
   label,
-  value,
   disabled = false,
   width,
-  onChange,
   placeholder = "Selecione",
+  name = "",
 }) => {
+  const { register } = useFormContext();
+
   const [focus, setFocus] = useState<boolean>(false);
   const handleFocus = () => setFocus(!focus);
 
@@ -34,10 +37,10 @@ const Select: React.FC<IProps> = ({
     >
       {label && <Label>{label}</Label>}
       <S.SelectContainer disabled={disabled}>
-        <S.Select disabled={disabled} onChange={onChange} value={value}>
+        <S.Select disabled={disabled} {...register(name)}>
           <option>{placeholder}</option>
           {data.map((i: any, idx: number) => (
-            <option key={idx}>{i.label || i.name || i }</option>
+            <option key={idx}>{i.label || i.name || i}</option>
           ))}
         </S.Select>
         <div className="icon-custom">{">"}</div>

@@ -4,10 +4,10 @@ import Row from "../../common/Row";
 import Typography from "../../common/Typography";
 import Select from "../../common/Select";
 import Button from "../../common/Button";
-import { TSchedule, useForm } from "../../../contexts/form";
+// import { TSchedule, useForm } from "../../../contexts/form";
 
 const FormTeam: React.FC = () => {
-  const { addPokemon, payloadSchedule, setPayloadSchedule } = useForm();
+  // const { addPokemon, payloadSchedule, setPayloadSchedule } = useForm();
 
   return (
     <S.Container>
@@ -20,7 +20,7 @@ const FormTeam: React.FC = () => {
         </Typography>
       </div>
 
-      {payloadSchedule.team_pokemons.map(
+      {/* {payloadSchedule.team_pokemons.map(
         (i: { name: string }, index: number) => (
           <Row key={index}>
             <Typography color="#1D1D1D" fontSize={12} fontWeight={700}>
@@ -44,15 +44,15 @@ const FormTeam: React.FC = () => {
             />
           </Row>
         )
-      )}
+      )} */}
 
       <Button
         label="Adicionar novo pokémon ao time...+"
-        onClick={addPokemon}
+        // onClick={addPokemon}
         variant="outlined"
         fontSize={12}
         fontWeight={700}
-        disabled={payloadSchedule.team_pokemons_length === 6}
+        // disabled={payloadSchedule.team_pokemons_length === 6}
       />
     </S.Container>
   );
